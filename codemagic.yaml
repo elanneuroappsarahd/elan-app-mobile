@@ -1,0 +1,51 @@
+# Application Élan : compilation iPhone dans le cloud (Codemagic) et envoi vers TestFlight.
+# Prérequis dans Codemagic : un groupe de variables nommé « apple » (voir LISEZ-MOI.md).
+workflows:
+  ios-testflight:
+    name: iPhone → TestFlight
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    environment:
+      groups:
+        - apple
+      vars:
+        BUNDLE_ID: "fr.elanneurotherapie.app"
+        XCODE_PROJECT: "ios/App/App.xcodeproj"
+        XCODE_SCHEME: "App"
+      node: 22.22.2
+      xcode: latest
+    scripts:
+      - name: Installer les dépendances
+        script: npm ci
+      - name: Copier l’application web dans le projet iPhone
+        script: npx cap sync ios
+      - name: Préparer le trousseau
+        script: keychain initialize
+      - name: Créer ou récupérer le certificat et le profil Apple
+        script: |
+          app-store-connect fetch-signing-files "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+      - name: Installer le certificat
+        script: keychain add-certificates
+      - name: Appliquer la signature au projet
+        script: xcode-project use-profiles --project "$XCODE_PROJECT"
+      - name: Numéro de build
+        script: |
+          N="${PROJECT_BUILD_NUMBER:-${BUILD_NUMBER:-1}}"
+          perl -pi -e "s/CURRENT_PROJECT_VERSION = [0-9]+;/CURRENT_PROJECT_VERSION = $N;/g" "$XCODE_PROJECT/project.pbxproj"
+          grep -m1 "CURRENT_PROJECT_VERSION" "$XCODE_PROJECT/project.pbxproj"
+      - name: Compiler l’application
+        script: |
+          xcode-project build-ipa \
+            --project "$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME"
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+    publishing:
+      app_store_connect:
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        submit_to_testflight: false

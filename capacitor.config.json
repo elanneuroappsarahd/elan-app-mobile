@@ -1,0 +1,14 @@
+{
+  "appId": "fr.elanneurotherapie.app",
+  "appName": "Élan",
+  "webDir": "www",
+  "backgroundColor": "#F1EDEB",
+  "ios": {
+    "contentInset": "always",
+    "backgroundColor": "#F1EDEB",
+    "scheme": "Elan"
+  },
+  "android": {
+    "backgroundColor": "#F1EDEB"
+  }
+}

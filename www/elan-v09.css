@@ -1,0 +1,352 @@
+/* ============ Élan v0.9 : intégration du canvas (univers enfant réaliste, Odyssée ado, charte enseignant) ============ */
+@font-face{font-family:"Chillax";src:url(fonts/chillax-500.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Chillax";src:url(fonts/chillax-600.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Chillax";src:url(fonts/chillax-700.woff2) format("woff2");font-weight:700;font-display:swap}
+:root{--font-titre:"Chillax","Lexend",system-ui,sans-serif;--v9-or:#F09C1F;--v9-cyan:#7FE3F0;--v9-corail:#E36E63;--v9-bleu:#4C6BB2;--v9-vert:#4C9E63;--v9-creme:#F2EDEB;--v9-encre:#131212}
+
+/* Titres en Chillax (charte), textes et consignes restent en Lexend / Atkinson */
+:is(.hello h1,.section-h h2,.gate h1,.modal h2,.session-card h2,.monde-tete h2,.bilan h2,.consigne h2,.v9 h1,.v9 h2,.v9 h3){font-family:var(--font-titre);font-weight:600;letter-spacing:0}
+.v9 *{box-sizing:border-box}
+.v9-img{display:block;width:100%;height:100%;object-fit:cover}
+.v9-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.elio-img{border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px var(--v9-or);background:#1D1726;flex:none;display:inline-block}
+
+/* ======================= ENFANT : univers « Aventure » (6-10 ans) ======================= */
+#app[data-univers="aventure"],#run[data-univers="aventure"]{
+  --ground:#110D16;--surface:#1D1726;--surface-2:#272033;--stage:#1D1726;
+  --ink:#F7F1EE;--ink-2:#E2D9E6;--muted:#C3B9C9;--line:rgba(255,255,255,.09);--line-strong:rgba(255,255,255,.22);
+  --primary:#F09C1F;--primary-hover:#FFB13D;--primary-ink:#000000;--primary-soft:rgba(240,156,31,.16);
+  --ok:#5FC07B;--ok-soft:rgba(76,158,99,.2);--warn:#FFC56B;--warn-soft:rgba(240,156,31,.14);--bad:#F08A80;--bad-soft:rgba(227,110,99,.18);
+  --radius:22px;--radius-sm:16px;--radius-xs:12px;--shadow:none;color-scheme:dark}
+#app[data-univers="aventure"]{min-height:100dvh;background:#110D16;color:var(--ink)}
+body[data-univers="aventure"],body[data-univers="odyssee"]{background:#110D16}
+body[data-univers="odyssee"]{background:#0D111D}
+#app[data-univers="aventure"] .topbar{background:rgba(17,13,22,.86);border-bottom:1px solid var(--line);box-shadow:none}
+#app[data-univers="aventure"] .profile-chip{background:var(--surface-2);color:var(--ink)}
+#app[data-univers="aventure"] :is(.panel,.session-card,.side-card,.tile,.demande,.card){background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:none}
+#app[data-univers="aventure"] .btn{border-radius:18px}
+#app[data-univers="aventure"] .btn.primary{background:var(--v9-or);border-color:var(--v9-or);color:#000;box-shadow:0 5px 0 #9A5E08,0 0 22px rgba(240,156,31,.3);font-weight:600}
+#app[data-univers="aventure"] .btn.primary:hover{filter:brightness(1.07)}
+#app[data-univers="aventure"] .btn:not(.primary):not(.ghost){background:var(--surface-2);border-color:var(--line-strong);color:var(--ink)}
+#app[data-univers="aventure"] .pill{background:var(--surface-2);color:var(--ink-2)}
+#app[data-univers="aventure"] .pill.ok{background:rgba(76,158,99,.22);color:#9BE0B0}
+#app[data-univers="aventure"] .notice{background:var(--surface-2);color:var(--ink-2);border-color:var(--line)}
+#app[data-univers="aventure"] .notice.info{background:rgba(127,227,240,.08);border-color:rgba(127,227,240,.25)}
+#app[data-univers="aventure"] .input{background:var(--surface-2);color:var(--ink);border-color:var(--line-strong)}
+#app[data-univers="aventure"] .bottomnav{background:#17121E;border-top:1px solid var(--line);border-radius:26px 26px 0 0}
+#app[data-univers="aventure"] .bottomnav button{color:var(--muted);font-family:var(--font-titre);font-weight:500;font-size:.8rem}
+#app[data-univers="aventure"] .bottomnav button svg{padding:5px 14px;border-radius:14px;box-sizing:content-box}
+#app[data-univers="aventure"] .bottomnav button[aria-current="page"]{color:var(--ink);font-weight:600}
+#app[data-univers="aventure"] .bottomnav button[aria-current="page"] svg{background:var(--v9-or);color:#000;box-shadow:0 0 16px rgba(240,156,31,.45)}
+#app[data-univers="aventure"] .topnav button[aria-current="page"]{color:var(--v9-or)}
+#app[data-univers="aventure"] .main{padding-top:0}
+#app[data-univers="aventure"] .eyebrow{color:#FFC56B}
+#app[data-univers="aventure"] .ring circle:last-child{stroke:var(--v9-or)}
+
+/* Héros d'accueil : Élio qui salue */
+.v9-hero{position:relative;margin:0 -16px;height:330px;overflow:hidden;border-radius:0 0 4px 4px}
+.v9-hero>img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 44%}
+.v9-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,13,22,.5) 0%,rgba(17,13,22,0) 26%,rgba(17,13,22,0) 58%,#110D16 100%)}
+.v9-hero-bar{position:relative;z-index:1;display:flex;align-items:center;gap:10px;padding:14px 16px 0}
+.v9-hero-niv{display:flex;align-items:center;gap:10px;flex:1;min-width:0;color:var(--ink);text-decoration:none;background:none;border:0;padding:0;text-align:left;cursor:pointer;font:inherit}
+.v9-hero-niv span{display:flex;flex-direction:column;line-height:1.2;text-shadow:0 1px 8px rgba(0,0,0,.7)}
+.v9-hero-niv b{font-family:var(--font-titre);font-weight:600;font-size:1.05rem}
+.v9-hero-niv small{font-size:.85rem}
+.v9-chip{display:inline-flex;align-items:center;gap:6px;height:42px;padding:0 14px 0 10px;background:rgba(17,13,22,.72);border:1px solid var(--line);border-radius:999px;font:700 1.15rem var(--font-titre);color:var(--ink);white-space:nowrap}
+.v9-ring{position:relative;width:54px;height:54px;flex:none}
+.v9-ring svg{display:block}
+.v9-ring b{position:absolute;inset:0;display:grid;place-items:center;font:700 1.2rem var(--font-titre);color:var(--ink)}
+.v9-bulle{position:relative;z-index:2;margin:-98px 0 14px;background:rgba(29,23,38,.95);border:1px solid rgba(127,227,240,.3);border-radius:24px;box-shadow:0 0 24px rgba(127,227,240,.12);padding:14px 64px 14px 16px;display:flex;flex-direction:column;gap:4px}
+.v9-bulle b{font:600 1.45rem/1.1 var(--font-titre)}
+.v9-bulle span{font-size:1.02rem;font-weight:500;line-height:1.38}
+.v9-audio{position:absolute;top:12px;right:12px;width:46px;height:46px;border-radius:50%;border:0;background:#272033;color:var(--v9-cyan);box-shadow:0 0 0 1px rgba(127,227,240,.35),0 0 16px rgba(127,227,240,.25);display:grid;place-items:center;cursor:pointer}
+.v9-audio svg{width:22px;height:22px}
+
+/* Cartes génériques sombres */
+.v9-card{background:var(--surface,#1D1726);border:1px solid var(--line,rgba(255,255,255,.09));border-radius:24px;padding:16px;display:flex;flex-direction:column;gap:12px;color:var(--ink)}
+.v9-card h2{margin:0;font-size:1.25rem}
+.v9-row{display:flex;align-items:center;gap:10px}
+.v9-between{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.v9-muted{color:var(--muted)}
+.v9-btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:60px;border-radius:22px;border:0;background:var(--v9-or);color:#000;font:600 1.3rem var(--font-titre);box-shadow:0 6px 0 #9A5E08,0 0 26px rgba(240,156,31,.35);cursor:pointer;text-decoration:none;width:100%}
+.v9-btn:hover{filter:brightness(1.07)}
+.v9-btn:disabled{opacity:.5;cursor:not-allowed;filter:grayscale(.4)}
+.v9-btn.sec{background:#272033;color:var(--ink);box-shadow:0 0 0 1px rgba(255,255,255,.1);font-size:1.1rem;min-height:54px}
+.v9-pill{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border-radius:999px;background:rgba(240,156,31,.16);color:#FFC56B;font:600 .9rem var(--font-titre);white-space:nowrap}
+
+/* Carte « L'aventure d'Élio » sur l'accueil */
+.v9-aventure-carte{position:relative;display:block;height:190px;border-radius:24px;overflow:hidden;text-decoration:none;color:#fff;box-shadow:0 0 0 2px rgba(240,156,31,.55),0 0 22px rgba(240,156,31,.25);margin-bottom:16px;border:0;padding:0;width:100%;cursor:pointer;text-align:left;font:inherit}
+.v9-aventure-carte img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%}
+.v9-aventure-carte::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,13,22,.1) 20%,rgba(17,13,22,.92) 100%)}
+.v9-aventure-carte>span{position:absolute;left:16px;right:16px;bottom:14px;z-index:1;display:flex;flex-direction:column;gap:2px}
+.v9-aventure-carte small{font:600 .8rem var(--font-titre);letter-spacing:.12em;text-transform:uppercase;color:#FFC56B}
+.v9-aventure-carte b{font:600 1.35rem/1.15 var(--font-titre)}
+.v9-aventure-carte em{font-style:normal;font-size:.95rem;color:#E2D9E6}
+
+/* Jours d'élan */
+.v9-jours{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;text-align:center}
+.v9-jours div{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.8rem;color:var(--muted)}
+.v9-jours i{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.08);display:grid;place-items:center}
+.v9-jours i.on{background:var(--v9-or);box-shadow:0 0 10px rgba(240,156,31,.5)}
+.v9-jours i.auj{background:none;border:3px solid var(--v9-or)}
+
+/* Mondes en cartes photo */
+.v9-mondes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:18px}
+.v9-monde-carte{position:relative;height:170px;border-radius:22px;overflow:hidden;border:0;padding:0;cursor:pointer;color:#fff;text-align:left;font:inherit;box-shadow:inset 0 -3px 0 var(--c)}
+.v9-monde-carte img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%}
+.v9-monde-carte::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,13,22,0) 32%,rgba(17,13,22,.93) 100%)}
+.v9-monde-carte>span.txt{position:absolute;left:12px;right:10px;bottom:10px;z-index:1;display:flex;flex-direction:column;gap:1px}
+.v9-monde-carte small{font:600 .68rem var(--font-titre);letter-spacing:.1em;text-transform:uppercase;color:var(--cl,#FFC56B)}
+.v9-monde-carte b{font:600 1rem/1.15 var(--font-titre)}
+.v9-monde-carte em{font-style:normal;display:inline-flex;align-items:center;gap:4px;font-size:.8rem;color:#E2D9E6;font-weight:600}
+.v9-monde-carte .v9-badge{position:absolute;top:10px;left:10px;z-index:1;padding:4px 10px;border-radius:999px;background:var(--v9-or);color:#000;font:600 .72rem var(--font-titre)}
+.v9-monde-carte[aria-pressed="true"]{box-shadow:0 0 0 3px var(--v9-or),0 0 22px rgba(240,156,31,.5)}
+#app[data-univers="aventure"] .monde{background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:none;scroll-margin-top:80px}
+#app[data-univers="aventure"] .monde-tete h2{font-size:1.15rem}
+#app[data-univers="aventure"] .tuile-jeu{background:var(--surface-2);border:1px solid var(--line);border-radius:18px;box-shadow:none;color:var(--ink)}
+#app[data-univers="aventure"] .tuile-ico{background:color-mix(in srgb,var(--fam) 30%,transparent);color:#fff;border-radius:12px}
+#app[data-univers="aventure"] .monde-score{color:#FFC56B}
+
+/* Mon île */
+.v9-ile{position:relative;margin:0 -16px;aspect-ratio:390/430;overflow:hidden}
+.v9-ile>img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%}
+.v9-ile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,13,22,.55) 0%,rgba(17,13,22,0) 22%,rgba(17,13,22,0) 72%,#110D16 100%);pointer-events:none}
+.v9-ile-tete{position:absolute;left:16px;right:16px;top:14px;z-index:2;display:flex;align-items:flex-start;gap:12px;text-shadow:0 2px 10px rgba(0,0,0,.75)}
+.v9-ile-tete h1{margin:0;font-size:1.9rem;line-height:1.1}
+.v9-slot{position:absolute;z-index:1;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;border:3px dashed rgba(255,255,255,.9);background:rgba(17,13,22,.4);color:#fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 0 14px rgba(255,255,255,.3)}
+.v9-slot.plein{border:0;background:none;box-shadow:none;filter:drop-shadow(0 4px 8px rgba(0,0,0,.6))}
+.v9-slot.plein svg{width:50px;height:50px}
+.v9-slot:focus-visible{outline:3px solid var(--v9-or);outline-offset:3px}
+.v9-elio-pos{position:absolute;z-index:1;width:52px;height:52px;margin:-26px 0 0 -26px}
+.v9-objets{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.v9-objet{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 4px 8px;border-radius:20px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;font:inherit}
+.v9-objet[aria-pressed="true"]{background:var(--surface-2);box-shadow:0 0 0 3px var(--v9-or),0 0 18px rgba(240,156,31,.45);border-color:transparent}
+.v9-objet:disabled{opacity:.55;cursor:not-allowed;border-style:dashed}
+.v9-objet b{font:600 .85rem var(--font-titre)}
+.v9-objet small{display:inline-flex;align-items:center;gap:2px;font:700 .82rem var(--font-titre)}
+.v9-objet svg.ob{width:40px;height:40px}
+
+/* Album d'autocollants */
+.v9-album-tete{position:relative;margin:0 -16px;height:170px;overflow:hidden}
+.v9-album-tete img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%}
+.v9-album-tete::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,13,22,.15),rgba(17,13,22,.35) 45%,#110D16)}
+.v9-album-tete div{position:absolute;left:16px;right:16px;bottom:8px;z-index:1}
+.v9-album-tete h1{margin:0 0 8px;font-size:1.9rem;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+.v9-barre{flex:1;height:14px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden}
+.v9-barre i{display:block;height:100%;border-radius:999px;background:var(--v9-or);box-shadow:0 0 10px rgba(240,156,31,.7)}
+.v9-stickers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 8px}
+.v9-sticker{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;font-size:.8rem;font-weight:600;line-height:1.2}
+.v9-sticker span{width:68px;height:68px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 3px var(--c),0 6px 14px rgba(0,0,0,.45)}
+.v9-sticker span img{width:100%;height:100%;object-fit:cover}
+.v9-sticker.vide span{box-shadow:none;border:3px dashed rgba(255,255,255,.22);display:grid;place-items:center;font:700 1.6rem var(--font-titre);color:rgba(255,255,255,.4)}
+.v9-sticker.vide{color:var(--muted);font-weight:500}
+
+/* Aventure (chapitres) */
+.v9-chapitres{display:flex;flex-direction:column;gap:12px}
+.v9-chap{position:relative;display:flex;gap:12px;align-items:stretch;background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden;color:var(--ink);text-align:left;padding:0;font:inherit;cursor:pointer;width:100%}
+.v9-chap .vis{position:relative;width:96px;flex:none;min-height:120px}
+.v9-chap .vis img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%}
+.v9-chap .txt{flex:1;padding:12px 12px 12px 0;display:flex;flex-direction:column;gap:3px;min-width:0}
+.v9-chap .txt small{font:600 .72rem var(--font-titre);letter-spacing:.1em;text-transform:uppercase;color:var(--c)}
+.v9-chap .txt b{font:600 1.08rem/1.15 var(--font-titre)}
+.v9-chap .txt em{font-style:normal;font-size:.9rem;color:var(--muted);line-height:1.3}
+.v9-chap .etat{align-self:flex-start;margin-top:2px}
+.v9-chap.fait .vis img{filter:saturate(.7) brightness(.7)}
+.v9-chap.v9-lock{opacity:.6;cursor:default}
+.v9-chap.cour{box-shadow:0 0 0 3px var(--v9-or),0 0 22px rgba(240,156,31,.35);border-color:transparent}
+.v9-porte{position:relative;margin:0 -16px;height:420px;overflow:hidden}
+.v9-porte>img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.v9-porte::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,13,22,.7) 0%,rgba(17,13,22,0) 30%,rgba(17,13,22,0) 60%,#110D16 100%)}
+.v9-porte-tete{position:absolute;z-index:1;left:16px;right:16px;top:14px;display:flex;gap:12px;align-items:center}
+.v9-porte-tete h1{margin:0;font-size:1.55rem;line-height:1.1}
+.v9-porte-tete small{font:600 .85rem var(--font-titre);color:#F6B8B0}
+.v9-rond{width:46px;height:46px;border-radius:50%;background:rgba(17,13,22,.72);border:1px solid var(--line);color:var(--ink);display:grid;place-items:center;flex:none;cursor:pointer}
+.v9-recomp{display:flex;gap:10px;align-items:center;background:rgba(240,156,31,.12);border:1px solid rgba(240,156,31,.3);border-radius:16px;padding:10px 12px;font-weight:600}
+.v9-demain{display:flex;gap:10px;align-items:center;background:rgba(127,227,240,.08);border:1px solid rgba(127,227,240,.25);border-radius:16px;padding:10px 12px}
+
+/* Écran de jeu et bilan dans l'univers enfant */
+#run[data-univers="aventure"]{background:linear-gradient(180deg,rgba(16,11,20,.82),rgba(16,11,20,.95)),var(--v9-fond) center 30%/cover,#15101A;color:var(--ink)}
+#run[data-univers="aventure"] .run-top{background:rgba(17,13,22,.7);border-bottom:1px solid var(--line);color:var(--ink)}
+#run[data-univers="aventure"] #run-name{font-family:var(--font-titre);font-weight:600;font-size:1.2rem}
+#run[data-univers="aventure"] .run-x{background:rgba(255,255,255,.08);border:1px solid var(--line-strong);color:var(--ink);border-radius:50%}
+#run[data-univers="aventure"] .run-progress{background:rgba(255,255,255,.14);border-radius:999px}
+#run[data-univers="aventure"] .run-progress i{background:var(--v9-or);border-radius:999px;box-shadow:0 0 10px rgba(240,156,31,.6)}
+#run[data-univers="aventure"] .run-stage{margin:14px 14px 4px;background:rgba(29,23,38,.9);border:1px solid var(--line);border-radius:24px}
+#run[data-univers="aventure"] .resp-btn{background:#272033;color:var(--ink);border:1px solid var(--line-strong);border-radius:20px;box-shadow:0 5px 0 #0B070E}
+#run[data-univers="aventure"] .resp-btn.main-go{background:var(--v9-or);color:#000;border-color:var(--v9-or);box-shadow:0 5px 0 #9A5E08,0 0 22px rgba(240,156,31,.35);font-family:var(--font-titre)}
+.v9-bilan-img{width:calc(100% + 32px);margin:-16px -16px 0;height:240px;object-fit:cover;object-position:center 35%;border-radius:22px 22px 0 0;-webkit-mask-image:linear-gradient(180deg,#000 60%,transparent);mask-image:linear-gradient(180deg,#000 60%,transparent)}
+.v9-enigme-res{border-radius:18px;padding:14px;display:flex;gap:12px;align-items:center;text-align:left}
+.v9-enigme-res.ok{background:rgba(76,158,99,.18);border:1px solid rgba(95,192,123,.45)}
+.v9-enigme-res.ko{background:rgba(127,227,240,.08);border:1px solid rgba(127,227,240,.3)}
+.v9-enigme-res b{font:600 1.1rem var(--font-titre);display:block}
+.v9-enigme-res img{width:64px;height:64px;border-radius:50%;object-fit:cover;flex:none}
+#run[data-univers="aventure"] .bilan .stars svg polygon[fill="none"]{stroke:rgba(255,255,255,.25)}
+
+/* ======================= ADO : univers « Odyssée » (11 ans et +) ======================= */
+#app[data-univers="odyssee"],#run[data-univers="odyssee"]{
+  --ground:#0D111D;--surface:#161C2D;--surface-2:#1E2640;--stage:#161C2D;
+  --ink:#F2EDEB;--ink-2:#DCE1EE;--muted:#A9B0C6;--line:#2B3555;--line-strong:#3A4670;
+  --primary:#F09C1F;--primary-hover:#FFB13D;--primary-ink:#000000;--primary-soft:rgba(240,156,31,.14);
+  --ok:#5DBB78;--ok-soft:rgba(93,187,120,.18);--warn:#F2C77A;--warn-soft:rgba(240,156,31,.12);--bad:#F08A80;--bad-soft:rgba(227,110,99,.16);
+  --radius:0px;--radius-sm:0px;--radius-xs:0px;--shadow:none;color-scheme:dark}
+#app[data-univers="odyssee"]{min-height:100dvh;background:#0D111D;color:var(--ink)}
+#app[data-univers="odyssee"] .topbar{background:rgba(13,17,29,.9);border-bottom:1px solid var(--line);box-shadow:none}
+#app[data-univers="odyssee"] .profile-chip{background:var(--surface-2);color:var(--ink);border-radius:0}
+#app[data-univers="odyssee"] :is(.panel,.session-card,.side-card,.tile,.demande,.monde){background:var(--surface);border:0;border-radius:0;box-shadow:none}
+#app[data-univers="odyssee"] .btn{border-radius:0}
+#app[data-univers="odyssee"] .btn.primary{background:var(--v9-or);border-color:var(--v9-or);color:#000;text-transform:uppercase;letter-spacing:.06em;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+#app[data-univers="odyssee"] .btn:not(.primary):not(.ghost){background:var(--surface-2);border-color:var(--line-strong);color:var(--ink)}
+#app[data-univers="odyssee"] .pill{border-radius:0;background:var(--surface-2);color:var(--ink-2)}
+#app[data-univers="odyssee"] .notice{background:var(--surface-2);color:var(--ink-2);border-color:var(--line);border-radius:0}
+#app[data-univers="odyssee"] .input{background:var(--surface-2);color:var(--ink);border-color:var(--line-strong);border-radius:0}
+#app[data-univers="odyssee"] .bottomnav{background:#0B0F1A;border-top:1px solid var(--line)}
+#app[data-univers="odyssee"] .bottomnav button{color:var(--muted);font:600 .72rem var(--font-titre);text-transform:uppercase;letter-spacing:.1em}
+#app[data-univers="odyssee"] .bottomnav button[aria-current="page"]{color:var(--v9-or)}
+#app[data-univers="odyssee"] .bottomnav button[aria-current="page"] svg{filter:drop-shadow(0 0 6px rgba(240,156,31,.7))}
+#app[data-univers="odyssee"] .main{padding-top:0}
+#app[data-univers="odyssee"] .eyebrow{color:var(--v9-or);letter-spacing:.16em}
+#app[data-univers="odyssee"] .tuile-jeu{background:var(--surface-2);border:0;border-radius:0;box-shadow:inset 3px 0 0 var(--fam);color:var(--ink)}
+#app[data-univers="odyssee"] .tuile-ico{border-radius:0;background:color-mix(in srgb,var(--fam) 30%,transparent);color:#fff}
+.o-chf{clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)}
+.o-panel{background:#161C2D;padding:14px;display:flex;flex-direction:column;gap:10px;color:var(--ink)}
+.o-label{font:600 .72rem var(--font-titre);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.o-btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;border:0;background:var(--v9-or);color:#000;font:600 1rem var(--font-titre);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;width:100%;text-decoration:none;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)}
+.o-btn:hover{filter:brightness(1.08)}
+.o-btn:disabled{opacity:.45;cursor:not-allowed}
+.o-btn.sec{background:#1E2640;color:var(--ink);min-height:50px}
+.o-hero{position:relative;margin:0 -16px;height:360px;overflow:hidden}
+.o-hero>img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 18%}
+.o-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,17,29,.65) 0%,rgba(13,17,29,0) 25%,rgba(13,17,29,0) 55%,#0D111D 100%)}
+.o-hud{position:relative;z-index:1;display:flex;align-items:center;gap:10px;padding:14px 16px 0}
+.o-hud .o-id{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.15;text-shadow:0 1px 8px rgba(0,0,0,.8)}
+.o-hud .o-id b{font:600 1.15rem var(--font-titre)}
+.o-hud .o-id small{font:600 .72rem var(--font-titre);letter-spacing:.14em;text-transform:uppercase;color:var(--v9-or)}
+.o-eclats{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 12px;background:rgba(13,17,29,.8);border:1px solid var(--line);font:700 1.05rem var(--font-titre);color:var(--ink)}
+.o-rang{width:44px;height:50px;flex:none;position:relative}
+.o-rang b{position:absolute;inset:0;display:grid;place-items:center;font:700 1.1rem var(--font-titre);color:var(--v9-or)}
+.o-xp{position:relative;z-index:1;margin:-70px 0 0;display:flex;flex-direction:column;gap:6px}
+.o-xp .o-barres{display:flex;gap:3px}
+.o-xp .o-barres i{flex:1;height:8px;background:#2B3555}
+.o-xp .o-barres i.on{background:var(--v9-or);box-shadow:0 0 8px rgba(240,156,31,.6)}
+.o-xp .o-barres i.mi{background:#F2C77A}
+.o-elio{display:flex;gap:10px;align-items:flex-start;background:#1E2640;padding:12px;border-left:3px solid var(--v9-cyan)}
+.o-elio img{width:44px;height:44px;border-radius:50%;object-fit:cover;flex:none;box-shadow:0 0 0 2px var(--v9-or)}
+.o-defi{display:flex;gap:12px;align-items:center;background:#1E2640;padding:10px;color:var(--ink);border:0;width:100%;text-align:left;font:inherit;cursor:pointer}
+.o-defi .ico{width:46px;height:46px;flex:none;display:grid;place-items:center;background:color-mix(in srgb,var(--fam) 35%,#161C2D);color:#fff}
+.o-defi b{font:600 1rem var(--font-titre);display:block}
+.o-defi small{color:var(--muted)}
+.o-defi.fait{opacity:.6}
+.o-secteurs{display:flex;flex-direction:column;gap:10px}
+.o-secteur{position:relative;display:flex;align-items:stretch;min-height:110px;background:#161C2D;color:var(--ink);border:0;padding:0;width:100%;text-align:left;font:inherit;cursor:pointer;overflow:hidden}
+.o-secteur .vis{position:relative;width:104px;flex:none}
+.o-secteur .vis img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.o-secteur .txt{flex:1;padding:10px 12px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.o-secteur .txt small{font:600 .68rem var(--font-titre);letter-spacing:.14em;text-transform:uppercase;color:var(--c,#F09C1F)}
+.o-secteur .txt b{font:600 1.05rem/1.15 var(--font-titre)}
+.o-secteur .txt em{font-style:normal;font-size:.85rem;color:var(--muted);line-height:1.3}
+.o-secteur.cour{box-shadow:inset 0 0 0 2px var(--v9-or),0 0 22px rgba(240,156,31,.3)}
+.o-secteur.fait .vis img{filter:saturate(.6) brightness(.65)}
+.o-secteur.v9-lock{opacity:.55;cursor:default}
+.o-etat{font:600 .68rem var(--font-titre);letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;background:#2B3555;color:var(--ink-2);align-self:flex-start}
+.o-etat.ok{background:rgba(93,187,120,.2);color:#9BE0B0}
+.o-etat.cour{background:var(--v9-or);color:#000}
+.o-scene{position:relative;margin:0 -16px;height:460px;overflow:hidden}
+.o-scene>img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%}
+.o-scene::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,17,29,.75) 0%,rgba(13,17,29,0) 28%,rgba(13,17,29,0) 55%,#0D111D 100%)}
+.o-scene-tete{position:absolute;z-index:1;left:16px;right:16px;top:14px;display:flex;gap:12px;align-items:center}
+.o-scene-tete h1{margin:0;font-size:1.45rem;line-height:1.1}
+.o-scene-tete small{font:600 .72rem var(--font-titre);letter-spacing:.14em;text-transform:uppercase;color:var(--v9-or)}
+.o-carre{width:44px;height:44px;background:rgba(13,17,29,.8);border:1px solid var(--line);color:var(--ink);display:grid;place-items:center;flex:none;cursor:pointer}
+.o-enigme{border-left:3px solid #A98CDB;background:#1E2640;padding:12px;display:flex;flex-direction:column;gap:4px}
+.o-enigme small{font:600 .7rem var(--font-titre);letter-spacing:.14em;text-transform:uppercase;color:#C9B5F0}
+.o-enigme b{font:600 1.1rem var(--font-titre)}
+.o-heros-grille{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.o-heros-choix{position:relative;height:150px;border:0;padding:0;overflow:hidden;cursor:pointer;background:#161C2D;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+.o-heros-choix img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 15%}
+.o-heros-choix span{position:absolute;left:0;right:0;bottom:0;padding:16px 6px 6px;background:linear-gradient(180deg,transparent,rgba(13,17,29,.95));color:#fff;font:600 .9rem var(--font-titre);text-align:center}
+.o-heros-choix[aria-pressed="true"]{box-shadow:inset 0 0 0 3px var(--v9-or)}
+.o-grille2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.o-item{background:#1E2640;padding:10px;display:flex;flex-direction:column;gap:4px;color:var(--ink);border:0;font:inherit;text-align:left;cursor:pointer;position:relative}
+.o-item b{font:600 .98rem var(--font-titre)}
+.o-item small{color:var(--muted);font-size:.8rem;line-height:1.3}
+.o-item .prix{display:inline-flex;align-items:center;gap:4px;font:700 .95rem var(--font-titre);color:var(--ink)}
+.o-item[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--v9-or)}
+.o-item:disabled{opacity:.5;cursor:not-allowed}
+.o-rar{font:600 .66rem var(--font-titre);letter-spacing:.12em;text-transform:uppercase}
+.o-rar.commun{color:#A9B0C6}.o-rar.rare{color:#8EA6E6}.o-rar.epique{color:#C9B5F0}.o-rar.legendaire{color:#F2C77A}
+.o-item.epique{box-shadow:inset 0 0 0 1px rgba(169,140,219,.55)}
+.o-item.legendaire{box-shadow:inset 0 0 0 1px rgba(242,199,122,.6),0 0 16px rgba(240,156,31,.18)}
+.o-skill{background:#161C2D;padding:12px;display:flex;gap:12px;align-items:center}
+.o-skill .ico{width:50px;height:50px;flex:none;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 30%,#1E2640);color:#fff;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)}
+.o-skill .niv{display:flex;gap:4px;margin-top:4px}
+.o-skill .niv i{font:700 .72rem var(--font-titre);font-style:normal;padding:2px 7px;background:#2B3555;color:var(--muted)}
+.o-skill .niv i.on{background:var(--c);color:#000}
+.o-avatar-tint{position:absolute;inset:0;mix-blend-mode:color;opacity:.45;pointer-events:none}
+#run[data-univers="odyssee"]{background:linear-gradient(180deg,rgba(13,17,29,.85),rgba(13,17,29,.96)),var(--v9-fond) center 35%/cover,#0D111D;color:var(--ink)}
+#run[data-univers="odyssee"] .run-top{background:rgba(11,15,26,.85);border-bottom:1px solid var(--line);color:var(--ink)}
+#run[data-univers="odyssee"] #run-name{font-family:var(--font-titre);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:1rem}
+#run[data-univers="odyssee"] .run-x{background:#1E2640;border:1px solid var(--line);color:var(--ink);border-radius:0}
+#run[data-univers="odyssee"] .run-progress{background:#2B3555;border-radius:0}
+#run[data-univers="odyssee"] .run-progress i{background:var(--v9-or);border-radius:0}
+#run[data-univers="odyssee"] .run-stage{margin:14px 14px 4px;background:rgba(22,28,45,.92);border:0;border-radius:0}
+#run[data-univers="odyssee"] .resp-btn{background:#1E2640;color:var(--ink);border:1px solid var(--line-strong);border-radius:0}
+#run[data-univers="odyssee"] .resp-btn.main-go{background:var(--v9-or);color:#000;border-color:var(--v9-or);text-transform:uppercase;letter-spacing:.06em;font-family:var(--font-titre)}
+.o-gains{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;text-align:center}
+.o-gains div{background:#1E2640;padding:8px 4px;display:flex;flex-direction:column}
+.o-gains b{font:600 1.25rem var(--font-titre);color:var(--v9-or)}
+.o-gains small{font:600 .66rem var(--font-titre);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* ======================= ENSEIGNANT : charte Élan (bleu, angles droits, sans ombre) ======================= */
+#app[data-espace="enseignant"]{--primary:#4C6BB2;--primary-hover:#131212;--primary-ink:#FFFFFF;--primary-soft:#E1E7F4;--radius:0px;--radius-sm:0px;--radius-xs:0px;--shadow:none;--esp:#4C6BB2}
+@media (prefers-color-scheme:light){#app[data-espace="enseignant"]{--ground:#F2EDEB;--surface:#FFFFFF;--surface-2:#F7F4F2;--ink:#131212;--line:#E4DDD8}}
+#app[data-espace="enseignant"] .btn{border-radius:0}
+#app[data-espace="enseignant"] .btn.primary{background:#4C6BB2;border-color:#4C6BB2;color:#fff}
+#app[data-espace="enseignant"] .btn.primary:hover{background:#131212;border-color:#131212;color:#4C6BB2}
+#app[data-espace="enseignant"] :is(.panel,.session-card,.side-card,.tile,.card,.empty){border-radius:0;box-shadow:none}
+#app[data-espace="enseignant"] .input{border-radius:0}
+#app[data-espace="enseignant"] .pill{border-radius:0}
+#app[data-espace="enseignant"] .hello h1{position:relative}
+#app[data-espace="enseignant"] .hello h1::after{content:"é";display:inline-grid;place-items:center;width:1.05em;height:1.05em;margin-left:.3em;border-radius:50%;background:#4C6BB2;color:#fff;font-size:.62em;vertical-align:.25em;font-family:var(--font-titre)}
+#app[data-espace="enseignant"] .main::before{content:"";display:block;height:6px;margin:-28px -16px 22px;background:linear-gradient(90deg,#F09C1F 0 25%,#E36E63 25% 50%,#4C6BB2 50% 75%,#4C9E63 75%)}
+#app[data-espace="enseignant"] .bottomnav button[aria-current="page"],#app[data-espace="enseignant"] .topnav button[aria-current="page"]{color:#4C6BB2}
+.v9-photo{border:2px dashed #4C6BB2;padding:14px;display:flex;flex-direction:column;gap:10px;background:#F4F6FB}
+@media (prefers-color-scheme:dark){.v9-photo{background:rgba(76,107,178,.12)}}
+.v9-photo label.btn{align-self:flex-start;cursor:pointer}
+.v9-photos{display:flex;gap:8px;flex-wrap:wrap}
+.v9-photos figure{margin:0;position:relative;width:84px;height:112px;border:1px solid var(--line);overflow:hidden;background:#fff}
+.v9-photos figure img{width:100%;height:100%;object-fit:cover}
+.v9-photos figure figcaption{position:absolute;left:0;bottom:0;background:#131212;color:#fff;font-size:.7rem;padding:1px 6px}
+.v9-onglets{display:flex;gap:0;border:1px solid var(--line);overflow:auto}
+.v9-onglets button{flex:1;min-height:46px;border:0;border-right:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 .92rem var(--font-ui);cursor:pointer;padding:0 10px;white-space:nowrap}
+.v9-onglets button[aria-pressed="true"]{background:#4C6BB2;color:#fff}
+.v9-onglets button:hover{background:#131212;color:#4C6BB2}
+.v9-plus{font:700 .66rem var(--font-ui);background:#131212;color:#fff;padding:1px 5px;margin-left:4px;vertical-align:2px}
+.v9-carte-m{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.v9-carte-m .c-titre{grid-column:1/-1;background:#4C6BB2;color:#fff;padding:14px;font:600 1.3rem var(--font-titre);text-align:center}
+.v9-carte-m .c-et{border:2px solid var(--c);padding:12px;display:flex;flex-direction:column;gap:6px;background:var(--surface)}
+.v9-carte-m .c-et b{font:600 1.05rem var(--font-titre);color:var(--c)}
+.v9-carte-m .c-et span{font-family:var(--font-stim);font-size:1.05rem;line-height:1.55}
+.v9-carte-m .c-et mark{background:#FDEBD0;color:#131212;font-weight:700;padding:0 3px}
+.v9-carte-m .c-ret{grid-column:1/-1;border:2px solid #131212;padding:12px;font-family:var(--font-stim);font-size:1.05rem}
+.v9-video{background:#131212;color:#fff;aspect-ratio:16/10;display:flex;flex-direction:column;justify-content:space-between;padding:16px;position:relative;overflow:hidden}
+.v9-video .scene-n{font:600 .8rem var(--font-titre);letter-spacing:.12em;text-transform:uppercase;color:#8EA6E6}
+.v9-video .scene-t{font:600 clamp(1.1rem,4.4vw,1.7rem)/1.3 var(--font-stim);text-align:center;padding:0 6px}
+.v9-video .scene-t mark{background:#F09C1F;color:#000;padding:0 4px}
+.v9-video .scene-q{background:#4C6BB2;padding:10px;font-family:var(--font-stim);font-size:1rem}
+.v9-video .barre{height:4px;background:rgba(255,255,255,.2)}
+.v9-video .barre i{display:block;height:100%;background:#F09C1F}
+.v9-scenes{display:flex;flex-direction:column;gap:0;border:1px solid var(--line)}
+.v9-scenes button{display:flex;gap:10px;align-items:center;padding:10px 12px;border:0;border-bottom:1px solid var(--line);background:var(--surface);color:var(--ink);text-align:left;font:inherit;cursor:pointer}
+.v9-scenes button[aria-current="true"]{background:#E1E7F4;color:#131212;font-weight:600}
+.v9-scenes button span{font:600 .8rem var(--font-data);color:#4C6BB2;min-width:2.2em}
+.v9-paroles{display:flex;flex-direction:column;gap:12px;font-family:var(--font-stim);font-size:1.08rem;line-height:1.6}
+.v9-paroles .bloc b{display:block;font:600 .78rem var(--font-titre);letter-spacing:.12em;text-transform:uppercase;color:#4C6BB2;margin-bottom:2px}
+.v9-paroles .bloc.refrain{border-left:4px solid #F09C1F;padding-left:10px}
+.v9-paroles p{margin:0;padding:2px 6px}
+.v9-paroles p.joue{background:#FDEBD0;color:#131212}
+.v9-paroles mark{background:none;color:#4C6BB2;font-weight:700}
+@media print{body *{visibility:hidden}.v9-imprimable,.v9-imprimable *{visibility:visible}.v9-imprimable{position:absolute;left:0;top:0;width:100%}}
+
+#run[data-univers="aventure"] .gain-blocs,#run[data-univers="odyssee"] .gain-blocs{display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(240,156,31,.14);border:1px solid rgba(240,156,31,.35);color:var(--ink);border-radius:999px;padding:8px 14px;font:500 1rem var(--font-ui);box-shadow:none}
+#run[data-univers="aventure"] .gain-blocs b{font-family:var(--font-titre);font-weight:600}
+#run[data-univers="aventure"] .consigne,#run[data-univers="odyssee"] .consigne{color:var(--ink)}
