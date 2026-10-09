@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mon île</title><style>
+@font-face{font-family:"Chillax";src:url("/elan/fonts/chillax-500.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Chillax";src:url("/elan/fonts/chillax-600.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Chillax";src:url("/elan/fonts/chillax-700.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url("/elan/fonts/hanken-grotesk-400.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url("/elan/fonts/hanken-grotesk-500.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url("/elan/fonts/hanken-grotesk-600.woff2") format("woff2");font-weight:600;font-display:swap}
+body{margin:0}
+a{color:#F7F1EE;text-decoration:none}
+a.btn-or:hover{filter:brightness(1.08)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body style="margin:0">
+<!-- Maquette Élan · Enfant · Mon île · 390×844 -->
+
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; background: #110D16; color: #F7F1EE; font-family: 'Hanken Grotesk', system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden; ">
+  <div style="position: relative; flex: none; height: 420px">
+    <img src="/elan/images/ile-vue-ciel.jpg" alt="L'île de Léo vue du ciel : le phare, la grotte, la ville, le château, le circuit et l'atelier" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 45%">
+    <span aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(17,13,22,.6) 0%, rgba(17,13,22,0) 24%, rgba(17,13,22,0) 70%, #110D16 100%)"></span>
+    <header style="position: relative; display: flex; align-items: flex-start; gap: 12px; padding: 22px 20px 0">
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 2px; text-shadow: 0 2px 10px rgba(0,0,0,.7)">
+        <h1 style="margin: 0; font: 600 32px Chillax, sans-serif; line-height: 1.1">Mon île</h1>
+        <span style="font-size: 17px; font-weight: 500">Pose tes trouvailles où tu veux.</span>
+      </div>
+      <span style="display: inline-flex; align-items: center; gap: 6px; height: 44px; padding: 0 14px 0 10px; background: rgba(17,13,22,.72); border: 1px solid rgba(255,255,255,.08); border-radius: 999px; font: 700 19px Chillax, sans-serif; color: #F7F1EE"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" ><path d="M12 2.8l2.8 5.7 6.3.9-4.6 4.4 1.1 6.2L12 17.1 6.4 20l1.1-6.2-4.6-4.4 6.3-.9z" fill="#F09C1F"></path></svg>12</span>
+    </header>
+    <img src="/elan/images/elio-avatar.jpg" alt="Élio" style="position: absolute; left: 236px; top: 230px; width: 54px; height: 54px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px #F09C1F, 0 6px 16px rgba(0,0,0,.5)">
+    <button type="button" aria-label="Poser un objet ici" style="position: absolute; left: 70px; top: 250px; width: 52px; height: 52px; border-radius: 50%; border: 3px dashed #FFFFFF; background: rgba(17,13,22,.45); color: #FFFFFF; display: grid; place-items: center; cursor: pointer; box-shadow: 0 0 16px rgba(255,255,255,.35)">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
+    </button>
+    <button type="button" aria-label="Poser un objet ici" style="position: absolute; left: 180px; top: 320px; width: 52px; height: 52px; border-radius: 50%; border: 3px dashed #FFFFFF; background: rgba(17,13,22,.45); color: #FFFFFF; display: grid; place-items: center; cursor: pointer; box-shadow: 0 0 16px rgba(255,255,255,.35)">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
+    </button>
+  </div>
+  <section style="flex: 1; min-height: 0; padding: 4px 20px 12px; display: flex; flex-direction: column; gap: 12px">
+    <div style="display: flex; justify-content: space-between; align-items: baseline">
+      <h2 style="margin: 0; font: 600 20px Chillax, sans-serif">À poser</h2>
+      <span style="font-size: 14px; color: #C3B9C9">Touche un objet, puis une place</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px">
+      <button type="button" aria-pressed="true" style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 4px 8px; border-radius: 20px; border: 0; background: #272033; box-shadow: 0 0 0 3px #F09C1F, 0 0 18px rgba(240,156,31,.45); cursor: pointer; font-family: inherit; color: #F7F1EE">
+        <svg viewBox="0 0 48 48" width="42" height="42" aria-hidden="true"><rect x="22" y="26" width="5" height="16" rx="2.5" fill="#9C6B3E"></rect><circle cx="24" cy="20" r="13" fill="#4C9E63"></circle><circle cx="28" cy="16" r="3.5" fill="#E36E63"></circle></svg>
+        <span style="font: 600 14px Chillax, sans-serif">Arbre</span>
+        <span style="display: inline-flex; align-items: center; gap: 2px; font: 700 14px Chillax, sans-serif"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" ><path d="M12 2.8l2.8 5.7 6.3.9-4.6 4.4 1.1 6.2L12 17.1 6.4 20l1.1-6.2-4.6-4.4 6.3-.9z" fill="#F09C1F"></path></svg>3</span>
+      </button>
+      <button type="button" aria-pressed="false" style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 4px 8px; border-radius: 20px; border: 0; background: #1D1726; border: 1px solid rgba(255,255,255,.08); cursor: pointer; font-family: inherit; color: #F7F1EE">
+        <svg viewBox="0 0 48 48" width="42" height="42" aria-hidden="true"><path d="M6 30h36l-6 10H12z" fill="#4C6BB2"></path><path d="M24 30V8l14 20z" fill="#E36E63"></path><path d="M22 30V14l-10 16z" fill="#F3DDB5"></path></svg>
+        <span style="font: 600 14px Chillax, sans-serif">Bateau</span>
+        <span style="display: inline-flex; align-items: center; gap: 2px; font: 700 14px Chillax, sans-serif"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" ><path d="M12 2.8l2.8 5.7 6.3.9-4.6 4.4 1.1 6.2L12 17.1 6.4 20l1.1-6.2-4.6-4.4 6.3-.9z" fill="#F09C1F"></path></svg>6</span>
+      </button>
+      <button type="button" aria-pressed="false" style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 4px 8px; border-radius: 20px; border: 0; background: #1D1726; border: 1px solid rgba(255,255,255,.08); cursor: pointer; font-family: inherit; color: #F7F1EE">
+        <svg viewBox="0 0 48 48" width="42" height="42" aria-hidden="true"><circle cx="24" cy="16" r="10" fill="#F09C1F"></circle><circle cx="24" cy="16" r="5" fill="#FDEBD0"></circle><rect x="22" y="24" width="4" height="18" rx="2" fill="#F7F1EE"></rect><rect x="16" y="40" width="16" height="4" rx="2" fill="#F7F1EE"></rect></svg>
+        <span style="font: 600 14px Chillax, sans-serif">Lanterne</span>
+        <span style="display: inline-flex; align-items: center; gap: 2px; font: 700 14px Chillax, sans-serif"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" ><path d="M12 2.8l2.8 5.7 6.3.9-4.6 4.4 1.1 6.2L12 17.1 6.4 20l1.1-6.2-4.6-4.4 6.3-.9z" fill="#F09C1F"></path></svg>5</span>
+      </button>
+      <button type="button" disabled aria-label="Objet mystère, débloqué au niveau 6" style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 4px 8px; border-radius: 20px; border: 2px dashed rgba(255,255,255,.2); background: transparent; cursor: not-allowed; font-family: inherit; color: #C3B9C9">
+        <span style="width: 42px; height: 42px; display: grid; place-items: center; font: 700 26px Chillax, sans-serif">?</span>
+        <span style="font: 600 14px Chillax, sans-serif">Mystère</span>
+        <span style="display: inline-flex; align-items: center; gap: 3px; font: 600 13px 'Hanken Grotesk', sans-serif"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>Niv. 6</span>
+      </button>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px; background: #1D1726; border: 1px solid rgba(255,255,255,.08); border-radius: 18px; padding: 10px 14px; margin-top: auto">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#7FD49A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex: none" aria-hidden="true"><path d="M12 3v3"></path><path d="M5.6 5.6l2.1 2.1"></path><path d="M3 12h3"></path><circle cx="12" cy="12" r="4"></circle></svg>
+      <span style="font-size: 15px; line-height: 1.35">Ton île grandit quand tu joues. Rien ne disparaît, jamais.</span>
+    </div>
+  </section>
+
+  <nav aria-label="Navigation" style="flex: none; position: relative; background: #17121E; border-top: 1px solid rgba(255,255,255,.08); border-radius: 28px 28px 0 0; padding: 10px 12px 14px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px">
+    <a href="Enfant-Accueil.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 60px; color: #C3B9C9">
+      <span style="width: 56px; height: 36px; border-radius: 14px; display: grid; place-items: center; color: #C3B9C9;"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11.5L12 5l8 6.5V20a1 1 0 0 1-1 1h-4.5v-5.5h-5V21H5a1 1 0 0 1-1-1z"></path></svg></span>
+      <span style="font: 500 14px Chillax, sans-serif">Accueil</span>
+    </a>
+    <a href="Enfant-Mondes.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 60px; color: #C3B9C9">
+      <span style="width: 56px; height: 36px; border-radius: 14px; display: grid; place-items: center; color: #C3B9C9;"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4L3 6.5v13.5l6-2.5 6 2.5 6-2.5V4l-6 2.5z"></path><path d="M9 4v13.5"></path><path d="M15 6.5V20"></path></svg></span>
+      <span style="font: 500 14px Chillax, sans-serif">Mondes</span>
+    </a>
+    <a href="Enfant-Ile.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 60px; color: #F7F1EE">
+      <span style="width: 56px; height: 36px; border-radius: 14px; display: grid; place-items: center; background: #F09C1F; color: #000000; box-shadow: 0 0 16px rgba(240,156,31,.45);"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-8"></path><path d="M12 13c-3-4-7-4-9-2"></path><path d="M12 13c3-4 7-4 9-2"></path><path d="M12 13c-1-4-4-7-7-7"></path><path d="M12 13c1-4 4-7 7-7"></path><path d="M4 21h16"></path></svg></span>
+      <span style="font: 600 14px Chillax, sans-serif">Mon île</span>
+    </a>
+    <a href="Enfant-Album.html" style="display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 60px; color: #C3B9C9">
+      <span style="width: 56px; height: 36px; border-radius: 14px; display: grid; place-items: center; color: #C3B9C9;"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14v16H5z"></path><circle cx="12" cy="11" r="3.5"></circle><path d="M8 17h8"></path></svg></span>
+      <span style="font: 500 14px Chillax, sans-serif">Album</span>
+    </a>
+  </nav>
+</div>
+
+</body></html>

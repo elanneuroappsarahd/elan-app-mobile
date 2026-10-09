@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>En jeu : Interception</title><style>
+@font-face{font-family:"Chillax";src:url("/elan/fonts/chillax-500.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Chillax";src:url("/elan/fonts/chillax-600.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Chillax";src:url("/elan/fonts/chillax-700.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url("/elan/fonts/hanken-grotesk-400.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url("/elan/fonts/hanken-grotesk-500.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url("/elan/fonts/hanken-grotesk-600.woff2") format("woff2");font-weight:600;font-display:swap}
+body{margin:0}
+a{color:#F2EDEB;text-decoration:none}a:hover{color:#FFFFFF}
+@keyframes sweep{to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style></head><body style="margin:0">
+<!-- Maquette Élan · Ado · En jeu (Interception) · 390×844 -->
+
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #0D111D; color: #F2EDEB; font-family: 'Hanken Grotesk', system-ui, sans-serif; display: flex; flex-direction: column; gap: 12px; padding: 14px 16px 20px; overflow: hidden">
+  <div style="display: flex; align-items: center; gap: 10px">
+    <a href="Ado-QG.html" aria-label="Quitter la mission" style="width: 44px; height: 44px; background: #161C2D; display: grid; place-items: center; flex: none"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></a>
+    <span style="flex: 1; display: flex; flex-direction: column; line-height: 1.2"><b style="font: 600 18px Chillax, sans-serif; letter-spacing: .08em; text-transform: uppercase">Interception</b><small style="font-size: 12px; color: #8EA6E6">Secteur Vigilance</small></span>
+    <button type="button" aria-label="Pause" style="width: 44px; height: 44px; border: 0; background: #161C2D; color: #F2EDEB; display: grid; place-items: center; cursor: pointer; flex: none"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect></svg></button>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+    <div style="background: #161C2D; padding: 8px 10px; display: flex; flex-direction: column"><small style="font: 600 11px Chillax, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #A9B0C6">Score</small><b style="font: 600 22px Chillax, sans-serif">2 450</b></div>
+    <div style="background: #161C2D; padding: 8px 10px; display: flex; flex-direction: column"><small style="font: 600 11px Chillax, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #A9B0C6">Combo</small><b style="font: 600 22px Chillax, sans-serif; color: #F09C1F">×4</b></div>
+    <div style="background: #161C2D; padding: 8px 10px; display: flex; flex-direction: column"><small style="font: 600 11px Chillax, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #A9B0C6">Précision</small><b style="font: 600 22px Chillax, sans-serif">92 %</b></div>
+  </div>
+
+  <div style="display: flex; gap: 3px" role="img" aria-label="Signal 18 sur 30"><span style="flex: 18; height: 6px; background: #8EA6E6"></span><span style="flex: 12; height: 6px; background: #2B3555"></span></div>
+
+  <div style="position: relative; height: 400px; background: #101627; overflow: hidden; clip-path: polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px)">
+    <svg viewBox="0 0 358 400" width="358" height="400" style="position: absolute; inset: 0" aria-hidden="true">
+      <g fill="none" stroke="#2B3555" stroke-width="1.5"><circle cx="179" cy="200" r="60"></circle><circle cx="179" cy="200" r="115"></circle><circle cx="179" cy="200" r="170"></circle><path d="M179 20v360"></path><path d="M0 200h358"></path></g>
+      <g style="transform-origin: 179px 200px; animation: sweep 4s linear infinite"><path d="M179 200 L179 30 A170 170 0 0 1 300 80 Z" fill="#8EA6E6" opacity=".12"></path><path d="M179 200 L179 30" stroke="#8EA6E6" stroke-width="2"></path></g>
+      <g transform="translate(250 120)" style="animation: pulse 1s ease-in-out infinite"><circle r="26" fill="#F09C1F" opacity=".18"></circle><path d="M0 -15 L15 0 L0 15 L-15 0 Z" fill="#F09C1F"></path></g>
+      <g transform="translate(110 290)"><circle r="18" fill="#4C6BB2" opacity=".2"></circle><path d="M0 -10 L10 0 L0 10 L-10 0 Z" fill="#4C6BB2"></path></g>
+      <g transform="translate(95 150)" opacity=".5"><path d="M0 -8 L8 0 L0 8 L-8 0 Z" fill="#4C6BB2"></path></g>
+    </svg>
+    <span style="position: absolute; left: 50%; top: 14px; transform: translateX(-50%); padding: 4px 12px; background: rgba(13,17,29,.85); font: 600 14px Chillax, sans-serif; color: #5DBB78; white-space: nowrap">Parfait · 386 ms</span>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 10px; background: #161C2D; padding: 8px 10px">
+    <span style="flex: 1; font-size: 15px; line-height: 1.35">Capte les signaux <b style="color: #F09C1F">orange</b>, laisse passer les <b style="color: #8EA6E6">bleus</b>.</span>
+    <button type="button" aria-label="Écouter la consigne" style="width: 44px; height: 44px; border: 0; background: #1E2640; color: #8EA6E6; display: grid; place-items: center; cursor: pointer; flex: none"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z"></path><path d="M15.5 9a4 4 0 0 1 0 6"></path></svg></button>
+  </div>
+
+  <a href="Ado-Bravo.html" style="margin-top: auto; display: flex; align-items: center; justify-content: center; min-height: 76px; background: #F09C1F; color: #000000; font: 700 24px Chillax, sans-serif; letter-spacing: .12em; text-transform: uppercase; clip-path: polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px)">Capter</a>
+</div>
+
+</body></html>

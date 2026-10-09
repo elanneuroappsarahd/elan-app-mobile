@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bravo, fin de jeu</title><style>
+@font-face{font-family:"Chillax";src:url("/elan/fonts/chillax-500.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Chillax";src:url("/elan/fonts/chillax-600.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Chillax";src:url("/elan/fonts/chillax-700.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url("/elan/fonts/hanken-grotesk-400.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url("/elan/fonts/hanken-grotesk-500.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url("/elan/fonts/hanken-grotesk-600.woff2") format("woff2");font-weight:600;font-display:swap}
+body{margin:0}
+a{color:#F7F1EE;text-decoration:none}
+a.btn-or:hover{filter:brightness(1.08)}
+@keyframes elan-pop{0%{transform:scale(.4);opacity:0}70%{transform:scale(1.12);opacity:1}100%{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body style="margin:0">
+<!-- Maquette Élan · Enfant · Récompense de fin de jeu · 390×844 -->
+
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; background: #110D16; color: #F7F1EE; font-family: 'Hanken Grotesk', system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden; align-items: center; gap: 12px; padding: 0 20px 22px;">
+  <img src="/elan/images/elio-fete.jpg" alt="Élio fait la fête au milieu des confettis et des étoiles" style="position: absolute; left: 0; top: 0; width: 100%; height: 470px; object-fit: cover; object-position: center 35%">
+  <span aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 100%; height: 470px; background: linear-gradient(180deg, rgba(17,13,22,0) 50%, #110D16 100%)"></span>
+  <div style="position: relative; margin-top: 330px; display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center; text-shadow: 0 2px 12px rgba(0,0,0,.6)">
+    <h1 style="margin: 0; font: 600 40px Chillax, sans-serif; line-height: 1.05">Bravo Léo !</h1>
+    <p style="margin: 0; font-size: 18px; font-weight: 500">Tu as trouvé les 6 paires.</p>
+  </div>
+  <div style="position: relative; display: flex; align-items: flex-end; gap: 10px" role="img" aria-label="2 étoiles sur 3">
+    <svg viewBox="0 0 24 24" width="60" height="60" aria-hidden="true" style="animation: elan-pop .5s .1s both; filter: drop-shadow(0 0 10px rgba(240,156,31,.7))"><path d="M12 2.8l2.8 5.7 6.3.9-4.6 4.4 1.1 6.2L12 17.1 6.4 20l1.1-6.2-4.6-4.4 6.3-.9z" fill="#F09C1F"></path></svg>
+    <svg viewBox="0 0 24 24" width="76" height="76" aria-hidden="true" style="animation: elan-pop .5s .35s both; filter: drop-shadow(0 0 12px rgba(240,156,31,.8))"><path d="M12 2.8l2.8 5.7 6.3.9-4.6 4.4 1.1 6.2L12 17.1 6.4 20l1.1-6.2-4.6-4.4 6.3-.9z" fill="#F09C1F"></path></svg>
+    <svg viewBox="0 0 24 24" width="60" height="60" aria-hidden="true" ><path d="M12 2.8l2.8 5.7 6.3.9-4.6 4.4 1.1 6.2L12 17.1 6.4 20l1.1-6.2-4.6-4.4 6.3-.9z" fill="rgba(255,255,255,.16)"></path></svg>
+  </div>
+  <span style="position: relative; font-size: 15px; font-weight: 600; color: #C3B9C9; margin-top: -4px">La 3ᵉ étoile ? Moins de 12 coups.</span>
+  <div style="position: relative; width: 100%; box-sizing: border-box; background: #1D1726; border: 1px solid rgba(255,255,255,.08); border-radius: 22px; padding: 10px 14px; display: flex; align-items: center; gap: 12px">
+    <span style="position: relative; width: 50px; height: 50px; flex: none">
+          <svg viewBox="0 0 50 50" width="50" height="50" aria-hidden="true"><circle cx="25.0" cy="25.0" r="21.0" fill="rgba(17,13,22,.7)" stroke="rgba(255,255,255,.14)" stroke-width="6"></circle><circle cx="25.0" cy="25.0" r="21.0" fill="none" stroke="#F09C1F" stroke-width="6" stroke-linecap="round" stroke-dasharray="109.5 131.9" transform="rotate(-90 25.0 25.0)"></circle></svg>
+          <b style="position: absolute; inset: 0; display: grid; place-items: center; font: 700 18px Chillax, sans-serif; color: #F7F1EE">4</b>
+        </span>
+    <span style="flex: 1; font-size: 16px; line-height: 1.3"><b style="font-family: Chillax, sans-serif; font-weight: 600">+2 étoiles</b><br><span style="color: #C3B9C9">Encore 2 pour le niveau 5</span></span>
+  </div>
+  <div style="position: relative; width: 100%; box-sizing: border-box; background: #1D1726; border: 1px solid rgba(255,255,255,.08); border-radius: 22px; padding: 10px 14px 10px 10px; display: flex; align-items: center; gap: 14px">
+    <span style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; flex: none; transform: rotate(-8deg); box-shadow: 0 0 0 3px #E36E63, 0 0 14px rgba(227,110,99,.55)"><img src="/elan/images/st-cristal.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover"></span>
+    <span style="flex: 1; font-size: 16px; line-height: 1.3"><b style="font-family: Chillax, sans-serif; font-weight: 600; font-size: 17px">Nouvel autocollant !</b><br><span style="color: #C3B9C9">Le cristal de la grotte rejoint ton album.</span></span>
+  </div>
+  <div style="position: relative; width: 100%; display: flex; flex-direction: column; gap: 12px; margin-top: auto">
+    <a href="Enfant-Accueil.html" class="btn-or" style="display: flex; align-items: center; justify-content: center; min-height: 64px; border-radius: 22px; background: #F09C1F; box-shadow: 0 6px 0 #9A5E08, 0 0 26px rgba(240,156,31,.4); color: #000000; font: 600 21px Chillax, sans-serif">Continuer la mission · 2 sur 3</a>
+    <a href="Enfant-Jeu.html" style="display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; border-radius: 20px; background: #272033; border: 1px solid rgba(255,255,255,.08); color: #F7F1EE; font: 600 19px Chillax, sans-serif">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.5-5.8"></path><path d="M4 4v4h4"></path></svg>
+      Rejouer
+    </a>
+  </div>
+</div>
+
+</body></html>

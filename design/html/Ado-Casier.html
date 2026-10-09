@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Casier</title><style>
+@font-face{font-family:"Chillax";src:url("/elan/fonts/chillax-500.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Chillax";src:url("/elan/fonts/chillax-600.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url("/elan/fonts/hanken-grotesk-400.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url("/elan/fonts/hanken-grotesk-500.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url("/elan/fonts/hanken-grotesk-600.woff2") format("woff2");font-weight:600;font-display:swap}
+body{margin:0}
+a{color:#F2EDEB;text-decoration:none}a:hover{color:#FFFFFF}
+</style></head><body style="margin:0">
+<!-- Maquette Élan · Ado · Casier (tenues) · 390×844 -->
+
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #0D111D; color: #F2EDEB; font-family: 'Hanken Grotesk', system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden">
+  <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 12px; padding: 16px 16px 12px">
+    <div style="display: flex; justify-content: space-between; align-items: center">
+      <h1 style="margin: 0; font: 600 28px Chillax, sans-serif">Casier</h1>
+      <a href="Ado-Boutique.html" style="margin-left: auto; margin-right: 8px; display: inline-flex; align-items: center; min-height: 40px; padding: 0 12px; border: 1.5px solid #F09C1F; color: #F09C1F; font: 600 13px Chillax, sans-serif; letter-spacing: .06em; text-transform: uppercase">Boutique</a>
+      <span style="display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 12px; background: #161C2D; font: 600 16px Chillax, sans-serif"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 2l7 10-7 10-7-10z" fill="#E36E63"></path><path d="M12 2l3.5 10L12 22z" fill="#F09C1F"></path></svg>1 300</span>
+    </div>
+
+    <div style="display: flex; gap: 12px">
+      <div data-avatar="nova" style="position: relative; width: 170px; height: 220px; flex: none; background: #1E2640; overflow: hidden; box-shadow: inset 0 -3px 0 #A98CDB; clip-path: polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)">
+        <img src="/elan/images/nova-explorateur.jpg" alt="Nova, avatar exploratrice" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top">
+      </div>
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 6px">
+        <span style="font: 600 11px Chillax, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #A9B0C6">Équipé</span>
+        <div style="background: #161C2D; padding: 8px 10px; display: flex; flex-direction: column; line-height: 1.25"><small style="font-size: 12px; color: #A98CDB">Tenue · épique</small><b style="font-size: 14px">Veste Aurore</b></div>
+        <div style="background: #161C2D; padding: 8px 10px; display: flex; flex-direction: column; line-height: 1.25"><small style="font-size: 12px; color: #8EA6E6">Visière · rare</small><b style="font-size: 14px">Prisme bleu</b></div>
+        <div style="background: #161C2D; padding: 8px 10px; display: flex; flex-direction: column; line-height: 1.25"><small style="font-size: 12px; color: #8D94A8">Aura · commun</small><b style="font-size: 14px">Braise</b></div>
+        <div style="background: #161C2D; padding: 8px 10px; display: flex; flex-direction: column; line-height: 1.25"><small style="font-size: 12px; color: #F09C1F">Drone · légendaire</small><b style="font-size: 14px">Élio Solaire</b></div>
+      </div>
+    </div>
+
+    <div role="tablist" aria-label="Catégorie" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-bottom: 1px solid #2B3555">
+      <button type="button" role="tab" aria-selected="true" style="min-height: 44px; border: 0; border-bottom: 3px solid #F09C1F; background: transparent; color: #F09C1F; font: 600 13px Chillax, sans-serif; letter-spacing: .06em; text-transform: uppercase; cursor: pointer">Tenues</button>
+      <button type="button" role="tab" aria-selected="false" style="min-height: 44px; border: 0; background: transparent; color: #A9B0C6; font: 600 13px Chillax, sans-serif; letter-spacing: .06em; text-transform: uppercase; cursor: pointer">Visières</button>
+      <button type="button" role="tab" aria-selected="false" style="min-height: 44px; border: 0; background: transparent; color: #A9B0C6; font: 600 13px Chillax, sans-serif; letter-spacing: .06em; text-transform: uppercase; cursor: pointer">Auras</button>
+      <button type="button" role="tab" aria-selected="false" style="min-height: 44px; border: 0; background: transparent; color: #A9B0C6; font: 600 13px Chillax, sans-serif; letter-spacing: .06em; text-transform: uppercase; cursor: pointer">Drone</button>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+      <button type="button" aria-pressed="true" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 4px; border: 0; background: #1E2640; box-shadow: inset 0 0 0 2px #A98CDB; color: #F2EDEB; font-family: inherit; cursor: pointer"><svg viewBox="0 0 24 24" width="44" height="44" fill="#8A6BC2" aria-hidden="true"><path d="M8 4l4 2 4-2 4 4-3 3v9H7v-9L4 8z"></path></svg><b style="font-size: 13px">Aurore</b><small style="font-size: 11px; color: #A98CDB">Équipée</small></button>
+      <button type="button" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 4px; border: 0; background: #1E2640; box-shadow: inset 0 0 0 2px #8EA6E6; color: #F2EDEB; font-family: inherit; cursor: pointer"><svg viewBox="0 0 24 24" width="44" height="44" fill="#4C6BB2" aria-hidden="true"><path d="M8 4l4 2 4-2 4 4-3 3v9H7v-9L4 8z"></path></svg><b style="font-size: 13px">Marine</b><small style="font-size: 11px; color: #8EA6E6">Rare</small></button>
+      <button type="button" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 4px; border: 0; background: #1E2640; box-shadow: inset 0 0 0 2px #8D94A8; color: #F2EDEB; font-family: inherit; cursor: pointer"><svg viewBox="0 0 24 24" width="44" height="44" fill="#6B7390" aria-hidden="true"><path d="M8 4l4 2 4-2 4 4-3 3v9H7v-9L4 8z"></path></svg><b style="font-size: 13px">Graphite</b><small style="font-size: 11px; color: #A9B0C6">Commun</small></button>
+      <button type="button" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 4px; border: 0; background: #161C2D; box-shadow: inset 0 0 0 2px #F09C1F, 0 0 14px rgba(240,156,31,.35); color: #F2EDEB; font-family: inherit; cursor: pointer"><svg viewBox="0 0 24 24" width="44" height="44" fill="#F09C1F" aria-hidden="true"><path d="M8 4l4 2 4-2 4 4-3 3v9H7v-9L4 8z"></path></svg><b style="font-size: 13px">Solstice</b><small style="font-size: 11px; color: #F09C1F">800 éclats</small></button>
+      <button type="button" disabled aria-label="Tenue verrouillée, niveau 16" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 4px; border: 0; background: #161C2D; color: #A9B0C6; font-family: inherit; cursor: not-allowed"><svg viewBox="0 0 24 24" width="44" height="44" fill="#2B3555" aria-hidden="true"><path d="M8 4l4 2 4-2 4 4-3 3v9H7v-9L4 8z"></path></svg><b style="font-size: 13px">???</b><small style="font-size: 11px">Niveau 16</small></button>
+      <button type="button" disabled aria-label="Tenue verrouillée, secteur Forteresse" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 4px; border: 0; background: #161C2D; color: #A9B0C6; font-family: inherit; cursor: not-allowed"><svg viewBox="0 0 24 24" width="44" height="44" fill="#2B3555" aria-hidden="true"><path d="M8 4l4 2 4-2 4 4-3 3v9H7v-9L4 8z"></path></svg><b style="font-size: 13px">???</b><small style="font-size: 11px">Finir Forteresse</small></button>
+    </div>
+  </div>
+
+  <nav aria-label="Navigation" style="flex: none; background: #0D111D; border-top: 1px solid #2B3555; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr))">
+    <a href="Ado-QG.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 9px 2px 13px; color: #A9B0C6; font: 600 12px Chillax, sans-serif; letter-spacing: .08em; text-transform: uppercase; border-top: 3px solid transparent"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v10H3z"></path><path d="M9 21v-6h6v6"></path></svg>QG</a>
+    <a href="Ado-Monde.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 9px 2px 13px; color: #A9B0C6; font: 600 12px Chillax, sans-serif; letter-spacing: .08em; text-transform: uppercase; border-top: 3px solid transparent"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M9 4L3 6.5v13.5l6-2.5 6 2.5 6-2.5V4l-6 2.5z"></path><path d="M9 4v13.5"></path><path d="M15 6.5V20"></path></svg>Monde</a>
+    <a href="Ado-Competences.html" style="display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 9px 2px 13px; color: #A9B0C6; font: 600 12px Chillax, sans-serif; letter-spacing: .08em; text-transform: uppercase; border-top: 3px solid transparent"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"></path></svg>Skills</a>
+    <a href="Ado-Casier.html" aria-current="page" style="display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 9px 2px 13px; color: #F09C1F; font: 600 12px Chillax, sans-serif; letter-spacing: .08em; text-transform: uppercase; border-top: 3px solid #F09C1F"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M8 4l4 2 4-2 4 4-3 3v9H7v-9L4 8z"></path></svg>Casier</a>
+  </nav>
+</div>
+
+</body></html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ajouter un élève</title><style>
+@font-face{font-family:"Chillax";src:url("/elan/fonts/chillax-500.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Chillax";src:url("/elan/fonts/chillax-600.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url("/elan/fonts/hanken-grotesk-400.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url("/elan/fonts/hanken-grotesk-500.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url("/elan/fonts/hanken-grotesk-600.woff2") format("woff2");font-weight:600;font-display:swap}
+body{margin:0}
+a{color:#131212}a:hover{color:#000}
+.h-noir:hover{background:#000000!important;color:#FFFFFF!important;border-color:#000000!important}
+</style></head><body style="margin:0">
+<!-- Maquette Élan · Enseignant · Ajouter un élève · 1440×960 -->
+
+<div style="position: relative; width: 1440px; height: 960px; background: #F2EDEB; color: #131212; font-family: 'Hanken Grotesk', system-ui, sans-serif; font-size: 16px; line-height: 1.5; overflow: hidden">
+  <div aria-hidden="true" style="position: absolute; inset: 0; display: flex">
+    <div style="width: 248px; border-right: 1px solid #DCD3CD; padding: 28px 20px; box-sizing: border-box"><img src="/elan/images/logo-elan-neurotherapie.png" alt="" style="height: 52px; width: auto"></div>
+    <div style="flex: 1; padding: 32px 40px; display: flex; flex-direction: column; gap: 24px"><div style="height: 170px; background: #4C6BB2"></div><div style="height: 88px; background: #FFFFFF"></div><div style="flex: 1; background: #FFFFFF"></div></div>
+  </div>
+  <div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(19,18,18,.55)"></div>
+
+  <div role="dialog" aria-modal="true" aria-labelledby="aj-t" style="position: absolute; left: 50%; top: 56px; width: 720px; margin-left: -360px; background: #FFFFFF; display: flex; flex-direction: column">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 24px 28px 0">
+      <h2 id="aj-t" style="margin: 0; font: 600 28px Chillax, sans-serif">Ajouter un élève</h2>
+      <a href="Ens-Classe.html" aria-label="Fermer" class="h-noir" style="width: 44px; height: 44px; display: grid; place-items: center; border: 1.5px solid #131212"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></a>
+    </div>
+    <div role="tablist" aria-label="Façon d'ajouter" style="display: flex; margin: 18px 28px 0; border-bottom: 1px solid #131212">
+      <button type="button" role="tab" aria-selected="true" style="min-height: 46px; padding: 0 18px; border: 0; background: #4C6BB2; color: #FFFFFF; font: 600 15px 'Hanken Grotesk', sans-serif; cursor: pointer">Saisir moi-même</button>
+      <button type="button" role="tab" aria-selected="false" class="h-noir" style="min-height: 46px; padding: 0 18px; border: 0; background: #FFFFFF; color: #131212; font: 500 15px 'Hanken Grotesk', sans-serif; cursor: pointer">Avec un code famille</button>
+    </div>
+
+    <form style="padding: 22px 28px 0; display: flex; flex-direction: column; gap: 18px">
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px">
+        <div style="display: flex; flex-direction: column; gap: 6px"><label for="aj-p" style="font-size: 14px; font-weight: 600">Initiales ou pseudonyme</label><input id="aj-p" value="M.A." style="min-height: 48px; padding: 0 12px; border: 2px solid #4C6BB2; border-radius: 0; font: 500 16px 'Hanken Grotesk', sans-serif; color: #131212"></div>
+        <div style="display: flex; flex-direction: column; gap: 6px"><label for="aj-c" style="font-size: 14px; font-weight: 600">Classe ou groupe</label><input id="aj-c" value="CM2 B" style="min-height: 48px; padding: 0 12px; border: 1.5px solid #8C8580; border-radius: 0; font: 400 16px 'Hanken Grotesk', sans-serif; color: #131212"></div>
+      </div>
+      <p style="margin: -8px 0 0; font-size: 14px; color: #333333">Pas de nom de famille : des initiales suffisent pour vous repérer.</p>
+
+      <fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+        <legend style="padding: 0; margin-bottom: 10px; font-size: 14px; font-weight: 600">Profil indiqué dans le PAP</legend>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px">
+          <label for="pr1" style="display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border: 1px solid #131212; font-size: 14px; cursor: pointer"><input id="pr1" type="checkbox" style="accent-color: #4C6BB2; margin: 0">Dyslexie</label>
+          <label for="pr2" style="display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border: 1px solid #131212; font-size: 14px; cursor: pointer"><input id="pr2" type="checkbox" style="accent-color: #4C6BB2; margin: 0">Dysgraphie</label>
+          <label for="pr3" style="display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border: 1px solid #131212; font-size: 14px; cursor: pointer"><input id="pr3" type="checkbox" style="accent-color: #4C6BB2; margin: 0">Dyspraxie</label>
+          <label for="pr4" style="display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; background: #131212; color: #FFFFFF; font-size: 14px; font-weight: 600; cursor: pointer"><input id="pr4" type="checkbox" checked style="accent-color: #4C6BB2; margin: 0">Dyscalculie</label>
+          <label for="pr5" style="display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border: 1px solid #131212; font-size: 14px; cursor: pointer"><input id="pr5" type="checkbox" style="accent-color: #4C6BB2; margin: 0">Dysphasie</label>
+          <label for="pr6" style="display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border: 1px solid #131212; font-size: 14px; cursor: pointer"><input id="pr6" type="checkbox" style="accent-color: #4C6BB2; margin: 0">TDAH</label>
+          <label for="pr7" style="display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border: 1px solid #131212; font-size: 14px; cursor: pointer"><input id="pr7" type="checkbox" style="accent-color: #4C6BB2; margin: 0">TSA</label>
+          <label for="pr8" style="display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border: 1px solid #131212; font-size: 14px; cursor: pointer"><input id="pr8" type="checkbox" style="accent-color: #4C6BB2; margin: 0">SGT</label>
+          <label for="pr9" style="display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border: 1px solid #131212; font-size: 14px; cursor: pointer"><input id="pr9" type="checkbox" style="accent-color: #4C6BB2; margin: 0">TOP</label>
+          <label for="pr10" style="display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border: 1px solid #131212; font-size: 14px; cursor: pointer"><input id="pr10" type="checkbox" style="accent-color: #4C6BB2; margin: 0">Anxiété</label>
+          <label for="pr11" style="display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border: 1px solid #131212; font-size: 14px; cursor: pointer"><input id="pr11" type="checkbox" style="accent-color: #4C6BB2; margin: 0">HPI</label>
+        </div>
+      </fieldset>
+
+      <section style="background: #E1E7F4; padding: 16px 18px; display: flex; flex-direction: column; gap: 8px">
+        <b style="font-size: 15px; color: #131212">5 aménagements pré-cochés pour la dyscalculie</b>
+        <ul style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 20px; font-size: 15px">
+          <li style="display: flex; gap: 8px; align-items: flex-start"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#2E4785" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Tables, frise numérique, fiches aide-mémoire</li>
+          <li style="display: flex; gap: 8px; align-items: flex-start"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#2E4785" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Calculatrice</li>
+          <li style="display: flex; gap: 8px; align-items: flex-start"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#2E4785" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Raisonnement évalué plutôt que le calcul posé</li>
+          <li style="display: flex; gap: 8px; align-items: flex-start"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#2E4785" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Tâche découpée en étapes numérotées</li>
+          <li style="display: flex; gap: 8px; align-items: flex-start"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#2E4785" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 3px"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Temps majoré (tiers-temps) ou quantité réduite</li>
+        </ul>
+        <small style="font-size: 13px; color: #333333">Vous les ajusterez ensuite selon le PAP réel de l'élève.</small>
+      </section>
+    </form>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 20px 28px 24px; margin-top: 4px">
+      <small style="display: flex; gap: 8px; align-items: center; font-size: 13px; color: #333333"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>Rien n'est envoyé à la famille ni au centre.</small>
+      <div style="display: flex; gap: 10px">
+        <a href="Ens-Classe.html" class="h-noir" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 18px; text-decoration: none; font-weight: 600">Annuler</a>
+        <a href="Ens-Eleve.html" class="h-noir" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; background: #4C6BB2; color: #FFFFFF; text-decoration: none; font-weight: 600">Ajouter M.A.</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body></html>

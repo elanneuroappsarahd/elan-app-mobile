@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Épreuve jouable : la séquence des cristaux</title><style>
+@font-face{font-family:"Chillax";src:url("/elan/fonts/chillax-500.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Chillax";src:url("/elan/fonts/chillax-600.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Chillax";src:url("/elan/fonts/chillax-700.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url("/elan/fonts/hanken-grotesk-400.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url("/elan/fonts/hanken-grotesk-500.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url("/elan/fonts/hanken-grotesk-600.woff2") format("woff2");font-weight:600;font-display:swap}
+body{margin:0}
+a{color:#F2EDEB;text-decoration:none}a:hover{color:#FFFFFF}
+@keyframes rang{0%{transform:scale(.5);opacity:0}70%{transform:scale(1.1);opacity:1}100%{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body style="margin:0">
+<!-- Écran jouable : le comportement est décrit dans le script data-dc-script ci-dessous (logique du jeu). -->
+<!-- Maquette Élan · Ado · ÉPREUVE JOUABLE : la séquence des cristaux (Play) · 390×844 -->
+
+<div style="position: relative; width: 390px; height: 844px; overflow: hidden; background: #0D111D; color: #F2EDEB; font-family: 'Hanken Grotesk', system-ui, sans-serif">
+  <img src="/elan/images/crypte.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; opacity: .5">
+  <div aria-hidden="true" style="position: absolute; inset: 0; background: #3A2350; mix-blend-mode: color; opacity: .85"></div>
+  <div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(13,17,29,.35)"></div>
+
+  <sc-if value="{{introOn}}" hint-placeholder-val="{{ true }}">
+    <div style="position: absolute; inset: 0; display: flex; flex-direction: column; padding: 18px 16px 22px; box-sizing: border-box; gap: 14px">
+      <div style="display: flex; align-items: center; gap: 10px">
+        <a href="Ado-Monde.html" aria-label="Retour au monde" style="width: 44px; height: 44px; background: rgba(13,17,29,.8); display: grid; place-items: center"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></a>
+        <span style="padding: 6px 12px; background: rgba(13,17,29,.8); font: 600 12px Chillax, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #E36E63">Saison 1 · étape 2 · énigme</span>
+      </div>
+      <div style="margin-top: auto; display: flex; flex-direction: column; gap: 12px">
+        <div style="background: rgba(13,17,29,.9); box-shadow: inset 0 0 0 2px #E36E63; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+          <h1 style="margin: 0; font: 600 26px Chillax, sans-serif; line-height: 1.1">La séquence des cristaux</h1>
+          <p style="margin: 0; font-size: 16px; line-height: 1.45; color: #E2DCE8">Les cristaux vont s'allumer un par un. Touche-les ensuite <b>dans le même ordre</b>. Trois séquences justes d'affilée ouvrent la porte.</p>
+          <span style="font-size: 13px; color: #C9CEDD">Choisie par Élan pour toi : mémoire de travail · séquences de {{longueur}} cristaux</span>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center; background: rgba(13,17,29,.85); padding: 10px 12px">
+          <img src="/elan/images/elio.jpg" alt="" style="width: 40px; height: 40px; object-fit: cover; flex: none">
+          <span style="flex: 1; font-size: 14px; line-height: 1.35"><b style="color: #F09C1F">Élio :</b> pas de chrono. Prends ton temps, regarde bien.</span>
+          <button type="button" onClick="{{lire}}" aria-label="Écouter la consigne" style="width: 44px; height: 44px; border: 0; background: #1E2640; color: #8EA6E6; display: grid; place-items: center; cursor: pointer; flex: none"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z"></path><path d="M15.5 9a4 4 0 0 1 0 6"></path></svg></button>
+        </div>
+        <button type="button" onClick="{{commencer}}" style="min-height: 60px; border: 0; background: #F09C1F; color: #000000; font: 600 19px Chillax, sans-serif; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; clip-path: polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)">Commencer l'énigme</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{jeuOn}}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; inset: 0; display: flex; flex-direction: column; padding: 14px 16px 20px; box-sizing: border-box; gap: 12px">
+      <div style="display: flex; align-items: center; gap: 10px">
+        <button type="button" onClick="{{quitter}}" aria-label="Quitter l'énigme" style="width: 44px; height: 44px; border: 0; background: rgba(13,17,29,.85); color: #F2EDEB; display: grid; place-items: center; cursor: pointer; flex: none"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></button>
+        <span style="flex: 1; display: flex; flex-direction: column; line-height: 1.2"><b style="font: 600 18px Chillax, sans-serif">La séquence des cristaux</b><small style="font-size: 12px; color: #E36E63">{{longueur}} cristaux · séquence {{numero}} sur 3</small></span>
+      </div>
+      <div style="display: flex; gap: 6px" aria-hidden="true"><sc-for list="{{barres}}" as="b" hint-placeholder-count="3"><span style="{{b.style}}"></span></sc-for></div>
+      <div style="background: rgba(13,17,29,.88); padding: 10px 12px; font-size: 16px; font-weight: 600; line-height: 1.35; min-height: 44px; box-sizing: border-box" aria-live="polite">{{message}}</div>
+
+      <div style="flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 12px; padding: 8px">
+        <sc-for list="{{cristaux}}" as="c" hint-placeholder-count="9">
+          <button type="button" onClick="{{c.pick}}" aria-label="{{c.label}}" style="border: 0; background: transparent; display: grid; place-items: center; cursor: pointer; padding: 0; position: relative">
+            <svg viewBox="0 0 60 80" width="70" height="92" style="{{c.style}}" aria-hidden="true"><path d="M30 2 L50 24 L42 76 L18 76 L10 24 Z" fill="{{c.fill}}" stroke="{{c.trait}}" stroke-width="2"></path><path d="M30 2 L50 24 L30 30 Z" fill="{{c.reflet}}"></path></svg>
+            <sc-if value="{{c.numOn}}" hint-placeholder-val="{{ false }}"><b style="position: absolute; top: 2px; right: 12px; width: 26px; height: 26px; border-radius: 50%; background: #F09C1F; color: #000000; display: grid; place-items: center; font: 700 14px Chillax, sans-serif">{{c.num}}</b></sc-if>
+          </button>
+        </sc-for>
+      </div>
+
+      <div style="display: flex; gap: 10px">
+        <button type="button" onClick="{{indice}}" style="flex: 1; display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 0 12px; border: 0; background: rgba(13,17,29,.88); color: #F2EDEB; font: 600 15px 'Hanken Grotesk', sans-serif; text-align: left; cursor: pointer">
+          <img src="/elan/images/elio.jpg" alt="" style="width: 36px; height: 36px; object-fit: cover; flex: none">
+          <span style="display: flex; flex-direction: column; line-height: 1.2">Indice d'Élio<small style="font-size: 12px; color: #A9B0C6; font-weight: 400">rejoue la séquence · {{indices}} restant</small></span>
+        </button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{finOn}}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; inset: 0; background: #0D111D; display: flex; flex-direction: column">
+      <div style="position: relative; height: 330px; flex: none; overflow: hidden">
+        <img src="/elan/images/nova-explorateur.jpg" alt="Nova, rang Explorateur" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 18%">
+        <div aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 0; height: 150px; background: linear-gradient(180deg, rgba(13,17,29,0), #0D111D)"></div>
+        <div style="position: absolute; left: 18px; right: 18px; bottom: 10px; display: flex; flex-direction: column; gap: 2px">
+          <span style="font: 600 12px Chillax, sans-serif; letter-spacing: .18em; text-transform: uppercase; color: #5DBB78">Porte ouverte · étape 2 franchie</span>
+          <h1 style="margin: 0; font: 600 30px Chillax, sans-serif; line-height: 1.1">La crypte est à toi</h1>
+        </div>
+      </div>
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 12px 16px 20px">
+        <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+          <div style="background: #161C2D; padding: 10px; display: flex; flex-direction: column; align-items: center"><b style="font: 600 20px Chillax, sans-serif">{{tentatives}}</b><small style="font-size: 12px; color: #A9B0C6">séquences jouées</small></div>
+          <div style="background: #161C2D; padding: 10px; display: flex; flex-direction: column; align-items: center; text-align: center"><b style="font: 600 20px Chillax, sans-serif">{{longueur}}</b><small style="font-size: 12px; color: #A9B0C6">cristaux retenus</small></div>
+          <div style="background: #161C2D; padding: 10px; display: flex; flex-direction: column; align-items: center"><b style="font: 600 20px Chillax, sans-serif">+150</b><small style="font-size: 12px; color: #A9B0C6">éclats</small></div>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center; background: #1E2640; padding: 12px; box-shadow: inset 0 0 0 2px #E36E63">
+          <span style="width: 52px; height: 52px; background: #E36E63; display: grid; place-items: center; flex: none"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10l4 5-9 11L3 9z"></path><path d="M3 9h18"></path></svg></span>
+          <span style="display: flex; flex-direction: column; gap: 2px"><small style="font: 600 11px Chillax, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #E36E63">Nouvelle compétence</small><b style="font: 600 18px Chillax, sans-serif">Mémoire cristalline · I</b></span>
+        </div>
+        <div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px">
+          <a href="Ado-Monde.html" style="display: flex; align-items: center; justify-content: center; min-height: 58px; background: #F09C1F; color: #000000; font: 600 18px Chillax, sans-serif; letter-spacing: .06em; text-transform: uppercase; clip-path: polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)">Explorer la crypte</a>
+          <button type="button" onClick="{{rejouer}}" style="min-height: 48px; border: 0; background: #161C2D; color: #F2EDEB; font: 600 15px Chillax, sans-serif; letter-spacing: .06em; text-transform: uppercase; cursor: pointer">Rejouer l'énigme</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+
+<!-- logique de l’écran (référence) -->
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { phase: 'intro', longueur: 4, seq: [], allume: -1, saisie: [], reussites: 0, echecs: 0, indices: 1, tentatives: 0, verrou: true, message: '', erreur: -1 };
+    this.timers = [];
+  }
+  componentWillUnmount() { this.timers.forEach(t => clearTimeout(t)); }
+  later(fn, ms) { this.timers.push(setTimeout(fn, ms)); }
+  bip(f) {
+    try {
+      if (!this.ac) this.ac = new (window.AudioContext || window.webkitAudioContext)();
+      const o = this.ac.createOscillator(), g = this.ac.createGain();
+      o.frequency.value = f; o.type = 'triangle'; g.gain.value = 0.05;
+      o.connect(g); g.connect(this.ac.destination); o.start();
+      g.gain.exponentialRampToValueAtTime(0.0001, this.ac.currentTime + 0.3); o.stop(this.ac.currentTime + 0.31);
+    } catch (e) {}
+  }
+  dire(t) { try { const s = window.speechSynthesis; if (!s) return; s.cancel(); const u = new SpeechSynthesisUtterance(t); u.lang = 'fr-FR'; u.rate = 0.95; s.speak(u); } catch (e) {} }
+  tirer(n) {
+    const seq = []; let last = -1;
+    while (seq.length < n) { const k = Math.floor(Math.random() * 9); if (k !== last) { seq.push(k); last = k; } }
+    return seq;
+  }
+  montrer(seq, msg) {
+    this.setState({ seq: seq, saisie: [], allume: -1, verrou: true, erreur: -1, message: msg || 'Regarde bien la séquence…' });
+    seq.forEach((k, i) => {
+      this.later(() => { this.setState({ allume: k }); this.bip(440 + k * 55); }, 700 + i * 850);
+      this.later(() => this.setState({ allume: -1 }), 700 + i * 850 + 600);
+    });
+    this.later(() => this.setState({ verrou: false, message: 'À toi ! Touche les cristaux dans le même ordre.' }), 700 + seq.length * 850);
+  }
+  nouvelle(msg) { this.montrer(this.tirer(this.state.longueur), msg); }
+  toucher(k) {
+    const s = this.state;
+    if (s.phase !== 'jeu' || s.verrou) return;
+    const saisie = s.saisie.concat([k]), i = saisie.length - 1;
+    if (s.seq[i] !== k) {
+      const echecs = s.echecs + 1;
+      let longueur = s.longueur, msg = 'Pas tout à fait. Élio te remontre une séquence.';
+      if (echecs >= 2 && longueur > 3) { longueur -= 1; msg = 'Élan ajuste : séquence plus courte, tu vas y arriver.'; }
+      this.bip(180);
+      this.setState({ saisie: saisie, erreur: k, verrou: true, reussites: 0, echecs: echecs >= 2 ? 0 : echecs, longueur: longueur, tentatives: s.tentatives + 1, message: msg });
+      this.later(() => this.montrer(this.tirer(longueur), msg), 1400);
+      return;
+    }
+    this.bip(440 + k * 55);
+    if (saisie.length < s.seq.length) { this.setState({ saisie: saisie }); return; }
+    const reussites = s.reussites + 1, tentatives = s.tentatives + 1;
+    if (reussites >= 3) {
+      this.setState({ saisie: saisie, verrou: true, reussites: reussites, tentatives: tentatives, message: 'Les cristaux brillent… la porte s’ouvre !' });
+      this.later(() => { this.bip(660); this.later(() => this.bip(990), 180); this.setState({ phase: 'fin' }); }, 1300);
+      return;
+    }
+    this.setState({ saisie: saisie, verrou: true, reussites: reussites, echecs: 0, tentatives: tentatives, message: 'Juste ! Encore ' + (3 - reussites) + '.' });
+    this.later(() => this.nouvelle('Séquence suivante, regarde bien…'), 1200);
+  }
+  reset(phase) {
+    this.timers.forEach(t => clearTimeout(t)); this.timers = [];
+    this.setState({ phase: phase, longueur: 4, seq: [], allume: -1, saisie: [], reussites: 0, echecs: 0, indices: 1, tentatives: 0, verrou: true, erreur: -1, message: '' });
+    if (phase === 'jeu') this.later(() => this.nouvelle(), 50);
+  }
+  renderVals() {
+    const s = this.state;
+    const cristaux = [0, 1, 2, 3, 4, 5, 6, 7, 8].map(k => {
+      const allume = s.allume === k, rang = s.saisie.indexOf(k), touche = rang >= 0 && s.erreur !== k, err = s.erreur === k;
+      let fill = '#3B3150', trait = '#6B5A88', reflet = '#4E4268', style = 'transition: transform .15s, filter .15s;';
+      if (allume) { fill = '#F7A69E'; trait = '#FFFFFF'; reflet = '#FFFFFF'; style += ' transform: scale(1.12); filter: drop-shadow(0 0 16px rgba(240,156,31,.95));'; }
+      else if (err) { fill = '#5A2A3A'; trait = '#E36E63'; reflet = '#7A3A4A'; }
+      else if (touche) { fill = '#E36E63'; trait = '#F7A69E'; reflet = '#F7A69E'; style += ' filter: drop-shadow(0 0 8px rgba(227,110,99,.8));'; }
+      return { pick: () => this.toucher(k), fill: fill, trait: trait, reflet: reflet, style: style, numOn: touche, num: rang + 1, label: 'Cristal ' + (k + 1) };
+    });
+    const consigne = 'Les cristaux vont s’allumer un par un. Touche-les ensuite dans le même ordre. Trois séquences justes d’affilée ouvrent la porte.';
+    return {
+      introOn: s.phase === 'intro', jeuOn: s.phase === 'jeu', finOn: s.phase === 'fin',
+      longueur: s.longueur, numero: Math.min(3, s.reussites + 1), message: s.message, indices: s.indices, tentatives: s.tentatives,
+      cristaux: cristaux,
+      barres: [0, 1, 2].map(i => ({ style: 'flex: 1; height: 8px; background: ' + (i < s.reussites ? '#5DBB78' : (i === s.reussites ? '#E36E63' : 'rgba(255,255,255,.18)')) + ';' })),
+      commencer: () => { this.reset('jeu'); },
+      quitter: () => this.reset('intro'),
+      rejouer: () => this.reset('jeu'),
+      lire: () => this.dire(consigne),
+      indice: () => { const st = this.state; if (st.phase !== 'jeu' || st.verrou || st.indices < 1) return; this.setState({ indices: st.indices - 1 }); this.montrer(st.seq, 'Élio rejoue la séquence…'); },
+    };
+  }
+}
+</script>
+</body></html>

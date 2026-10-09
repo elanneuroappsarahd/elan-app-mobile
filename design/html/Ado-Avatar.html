@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Crée ton héros</title><style>
+@font-face{font-family:"Chillax";src:url("/elan/fonts/chillax-500.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Chillax";src:url("/elan/fonts/chillax-600.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Chillax";src:url("/elan/fonts/chillax-700.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url("/elan/fonts/hanken-grotesk-400.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url("/elan/fonts/hanken-grotesk-500.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url("/elan/fonts/hanken-grotesk-600.woff2") format("woff2");font-weight:600;font-display:swap}
+body{margin:0}
+a{color:#F2EDEB;text-decoration:none}a:hover{color:#FFFFFF}
+</style></head><body style="margin:0">
+<!-- Maquette Élan · Ado · Choisis ton héros · 390×844 -->
+
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #0D111D; color: #F2EDEB; font-family: 'Hanken Grotesk', system-ui, sans-serif; display: flex; flex-direction: column; gap: 16px; padding: 20px 20px 22px; overflow: hidden">
+  <div style="display: flex; flex-direction: column; gap: 2px">
+    <span style="font: 600 12px Chillax, sans-serif; letter-spacing: .18em; text-transform: uppercase; color: #F09C1F">Étape 1 sur 2</span>
+    <h1 style="margin: 0; font: 600 30px Chillax, sans-serif; line-height: 1.1">Choisis ton héros</h1>
+  </div>
+
+  <div data-avatar="nova" style="position: relative; height: 380px; background: #1E2640; overflow: hidden; box-shadow: inset 0 -4px 0 #F09C1F; clip-path: polygon(20px 0,100% 0,100% calc(100% - 20px),calc(100% - 20px) 100%,0 100%,0 20px)">
+    <img src="/elan/images/nova.jpg" alt="Nova, avatar exploratrice" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top">
+    <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 16px 18px; background: rgba(13,17,29,.78); display: flex; justify-content: space-between; align-items: flex-end">
+      <div style="display: flex; flex-direction: column"><b style="font: 600 28px Chillax, sans-serif; line-height: 1.1">Nova</b><span style="font-size: 14px; color: #C9CEDD">Exploratrice · bonus de précision</span></div>
+      <span style="font: 600 12px Chillax, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #F09C1F">Choisie</span>
+    </div>
+  </div>
+
+  <div role="radiogroup" aria-label="Héros" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+    <button type="button" role="radio" aria-checked="true" aria-label="Nova" style="position: relative; overflow: hidden; height: 78px; border: 0; padding: 0; background: #1E2640; box-shadow: inset 0 0 0 3px #F09C1F; cursor: pointer; clip-path: polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)"><img src="/elan/images/nova.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top"></button>
+    <button type="button" role="radio" aria-checked="false" aria-label="Kai" style="position: relative; overflow: hidden; height: 78px; border: 0; padding: 0; background: #1E2640; cursor: pointer; clip-path: polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)"><img src="/elan/images/kai.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top"></button>
+    <button type="button" role="radio" aria-checked="false" aria-label="Sol" style="position: relative; overflow: hidden; height: 78px; border: 0; padding: 0; background: #1E2640; cursor: pointer; clip-path: polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)"><img src="/elan/images/sol.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top"></button>
+    <button type="button" aria-label="Voir d'autres héros" style="height: 78px; border: 1.5px dashed #2B3555; background: transparent; color: #A9B0C6; font: 600 13px 'Hanken Grotesk', sans-serif; cursor: pointer">+ 5</button>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <span style="font: 600 12px Chillax, sans-serif; letter-spacing: .16em; text-transform: uppercase; color: #A9B0C6">Couleur de la tenue</span>
+    <div role="radiogroup" aria-label="Couleur de la tenue" style="display: flex; gap: 10px">
+      <button type="button" role="radio" aria-checked="true" aria-label="Orange" style="width: 44px; height: 44px; border-radius: 50%; border: 0; background: #F09C1F; box-shadow: 0 0 0 3px #0D111D, 0 0 0 5px #F2EDEB; cursor: pointer"></button>
+      <button type="button" role="radio" aria-checked="false" aria-label="Corail" style="width: 44px; height: 44px; border-radius: 50%; border: 0; background: #E36E63; cursor: pointer"></button>
+      <button type="button" role="radio" aria-checked="false" aria-label="Bleu" style="width: 44px; height: 44px; border-radius: 50%; border: 0; background: #4C6BB2; cursor: pointer"></button>
+      <button type="button" role="radio" aria-checked="false" aria-label="Vert" style="width: 44px; height: 44px; border-radius: 50%; border: 0; background: #4C9E63; cursor: pointer"></button>
+      <button type="button" role="radio" aria-checked="false" aria-label="Violet" style="width: 44px; height: 44px; border-radius: 50%; border: 0; background: #8A6BC2; cursor: pointer"></button>
+    </div>
+  </div>
+
+  <a href="Ado-QG.html" style="margin-top: auto; display: flex; align-items: center; justify-content: center; min-height: 60px; background: #F09C1F; color: #000000; font: 600 19px Chillax, sans-serif; letter-spacing: .06em; text-transform: uppercase; clip-path: polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)">Valider mon héros</a>
+</div>
+
+</body></html>
